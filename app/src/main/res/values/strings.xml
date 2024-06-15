@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FamilyApp</string>
+    <string name="security">Security</string>
+    <string name="sos">SOS</string>
+    <string name="in_case_of_emergency_keep_telling_family_members_to_contact_me">In case of emergency , keep telling family members to contact me</string>
+    <string name="guard">GUARD</string>
+    <string name="guard_text">Open when you are on a potentially dangerous journey.</string>
+</resources>
