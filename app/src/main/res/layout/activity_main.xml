@@ -9,114 +9,53 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/txt_secr"
+        android:id="@+id/txt_myfamily"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/security"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="18dp"
-        android:textStyle="bold"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:textSize="24sp"/>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/pinkCard"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:layout_margin="16dp"
-        app:cardBackgroundColor="#f0737b"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintTop_toBottomOf="@id/txt_secr" />
-
-
-    <TextView
-        android:id="@+id/textSOS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:elevation="8dp"
-        android:text="@string/sos"
-        android:textColor="#FFFFFF"
+        android:text="@string/my_family"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/pinkCard"
-        app:layout_constraintTop_toTopOf="@id/pinkCard" />
-
-    <TextView
-        app:layout_constraintStart_toStartOf="@id/pinkCard"
-        app:layout_constraintEnd_toStartOf="@id/sosImg"
-        android:id="@+id/sos_msg"
-        android:layout_width="0dp"
-        android:layout_margin="8dp"
-        android:layout_height="wrap_content"
-        android:elevation="8dp"
-        android:text="@string/in_case_of_emergency_keep_telling_family_members_to_contact_me"
-        android:textColor="#FFF"
-        app:layout_constraintTop_toBottomOf="@id/textSOS" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/sosImg"
-        android:layout_margin="16dp"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:elevation="8dp"
-        android:src="@drawable/sos"
-        app:layout_constraintBottom_toBottomOf="@id/pinkCard"
-        app:layout_constraintEnd_toEndOf="@id/pinkCard"
-        app:layout_constraintTop_toTopOf="@id/pinkCard"
-        />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/greenCard"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:layout_margin="16dp"
-        app:cardBackgroundColor="#63d2c8"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintTop_toBottomOf="@id/pinkCard" />
-
-    <TextView
-        android:id="@+id/textGuard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:elevation="8dp"
-        android:text="@string/guard"
-        android:textColor="#FFFFFF"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/greenCard"
-        app:layout_constraintTop_toTopOf="@id/greenCard" />
-
-
-    <TextView
-        app:layout_constraintStart_toStartOf="@id/greenCard"
-        app:layout_constraintEnd_toStartOf="@id/guardImg"
-        android:id="@+id/guard_msg"
-        android:layout_width="0dp"
-        android:layout_margin="8dp"
-        android:layout_height="wrap_content"
-        android:elevation="8dp"
-        android:text="@string/guard_text"
-        android:textColor="#FFF"
-        app:layout_constraintTop_toBottomOf="@id/textGuard" />
+        app:layout_constraintTop_toTopOf="@id/txt_myfamily"
+        app:layout_constraintLeft_toLeftOf="@id/txt_myfamily"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/location"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="18dp" />
 
     <ImageView
-        android:id="@+id/guardImg"
-        android:layout_margin="16dp"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:elevation="8dp"
-        android:src="@drawable/guard"
-        app:layout_constraintBottom_toBottomOf="@id/greenCard"
-        app:layout_constraintEnd_toEndOf="@id/greenCard"
-        app:layout_constraintTop_toTopOf="@id/greenCard"/>
+        app:layout_constraintTop_toTopOf="@id/txt_myfamily"
+        app:layout_constraintRight_toRightOf="@id/txt_myfamily"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/dots"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="18dp" />
     
+    <FrameLayout
+        android:id="@+id/container"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        app:menu="@menu/bottom_bar_items"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-    
+        android:id="@+id/bottom_bar"
+        app:itemIconTint="@drawable/nav_items_colors"
+        app:itemTextColor="@color/green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_bar_items"
+        tools:layout_editor_absoluteX="16dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
