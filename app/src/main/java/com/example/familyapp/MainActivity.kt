@@ -85,14 +85,14 @@ class MainActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if(requestCode == permissionCode){
-            if(allPermissionGranted()){
-                openCamera()
-            }
-            else{
-
-            }
-        }
+//        if(requestCode == permissionCode){
+//            if(allPermissionGranted()){
+//                openCamera()
+//            }
+//            else{
+//
+//            }
+//        }
     }
 
     private fun openCamera() {
