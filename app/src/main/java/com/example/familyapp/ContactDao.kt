@@ -1,5 +1,6 @@
 package com.example.familyapp
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -10,8 +11,11 @@ interface ContactDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(contactModel: ContactModel)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(contactModelList: List<ContactModel>)
+
     @Query("SELECT * FROM contactmodel")
-    suspend fun getAllContacts():List<ContactModel>
+    fun getAllContacts(): LiveData<List<ContactModel>>
 
 
 }

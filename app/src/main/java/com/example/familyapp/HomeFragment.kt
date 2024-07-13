@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.CoroutineScope
@@ -16,7 +15,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class HomeFragment : Fragment() {
-
+    lateinit var inviteAdapter: InviteAdapter
     private val listContacts: ArrayList<ContactModel> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,15 +54,15 @@ class HomeFragment : Fragment() {
         recycler.adapter = adapter
 
 
-        val inviteAdapter = InviteAdapter(listContacts)
+
+        inviteAdapter = InviteAdapter(listContacts)
+        fetchDatabaseContacts()
 
         CoroutineScope(Dispatchers.IO).launch{
             Log.d("FetchContact","Coroutine starts")
-            listContacts.addAll(fetchContacts())
 
-            withContext(Dispatchers.Main) {
-                inviteAdapter.notifyDataSetChanged()
-            }
+            insertDatabaseContacts(fetchContacts())
+            
         }
 
 
@@ -71,6 +70,26 @@ class HomeFragment : Fragment() {
         val inviteRecycler = requireView().findViewById<RecyclerView>(R.id.recycler_invite)
         inviteRecycler.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
         inviteRecycler.adapter = inviteAdapter
+
+    }
+
+    private fun fetchDatabaseContacts() {
+        val database = FamilyDatabase.getDatabase(requireContext())
+
+        database.ContactDao().getAllContacts().observe(viewLifecycleOwner){
+
+            listContacts.clear()
+            listContacts.addAll(it)
+
+            inviteAdapter.notifyDataSetChanged()
+
+        }
+    }
+
+    private suspend fun insertDatabaseContacts(listContacts: ArrayList<ContactModel>) {
+        val database = FamilyDatabase.getDatabase(requireContext())
+
+        database.ContactDao().insertAll(listContacts)
 
     }
 
